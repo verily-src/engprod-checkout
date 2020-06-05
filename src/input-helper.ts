@@ -35,6 +35,8 @@ export function getInputs(): IGitSourceSettings {
   result.repositoryOwner = splitRepository[0]
   result.repositoryName = splitRepository[1]
 
+  core.info(`Owner: ${result.repositoryOwner}, Repo: ${result.repositoryName}`)
+
   // Repository path
   result.repositoryPath = core.getInput('path') || '.'
   result.repositoryPath = path.resolve(
