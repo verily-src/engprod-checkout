@@ -25,17 +25,11 @@ export function getInputs(): IGitSourceSettings {
   if (
     splitRepository.length !== 2 ||
     !splitRepository[0] ||
-    !splitRepository[1]
+    !splitRepository[1] ||
+    splitRepository[0] != `${github.context.repo.owner}`
   ) {
     throw new Error(
-      `Invalid repository '${qualifiedRepository}'. Expected format {owner}/{repo}.`
-    )
-  }
-  if (
-    splitRepository[0] != "verily-src"
-  ) {
-    throw new Error(
-      `Invalid repository '${qualifiedRepository}'. Expected {owner}='verily-src'`
+      `Invalid repository '${qualifiedRepository}'. Expected format ${github.context.repo.owner}/{repo}.`
     )
   }
   result.repositoryOwner = splitRepository[0]
