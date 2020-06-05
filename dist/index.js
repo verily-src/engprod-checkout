@@ -14074,17 +14074,10 @@ function getInputs() {
     fsHelper.directoryExistsSync(githubWorkspacePath, true);
     // Qualified repository
     const qualifiedRepository = core.getInput('repository') ||
-        `${github.context.repo.owner}/${github.context.repo.repo}`;
+        `${github.context.repo.repo}`;
     core.debug(`qualified repository = '${qualifiedRepository}'`);
-    const splitRepository = qualifiedRepository.split('/');
-    if (splitRepository.length !== 2 ||
-        !splitRepository[0] ||
-        !splitRepository[1] ||
-        splitRepository[0] !== github.context.repo.owner) {
-        throw new Error(`Invalid repository '${qualifiedRepository}'. Expected format ${github.context.repo.owner}/{repo}.`);
-    }
-    result.repositoryOwner = splitRepository[0];
-    result.repositoryName = splitRepository[1];
+    result.repositoryOwner = github.context.repo.owner;
+    result.repositoryName = qualifiedRepository;
     // Repository path
     result.repositoryPath = core.getInput('path') || '.';
     result.repositoryPath = path.resolve(githubWorkspacePath, result.repositoryPath);
