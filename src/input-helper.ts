@@ -19,10 +19,10 @@ export function getInputs(): IGitSourceSettings {
   // Qualified repository
   const qualifiedRepository =
     core.getInput('repository') ||
-    `${github.context.repo.repo}`
+    github.context.repo.repo.split('/')[1]
   core.debug(`qualified repository = '${qualifiedRepository}'`)
   result.repositoryOwner = github.context.repo.owner
-  result.repositoryName = qualifiedRepository
+  result.repositoryName = 
 
   // Repository path
   result.repositoryPath = core.getInput('path') || '.'
