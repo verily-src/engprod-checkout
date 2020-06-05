@@ -14074,7 +14074,7 @@ function getInputs() {
     fsHelper.directoryExistsSync(githubWorkspacePath, true);
     // Qualified repository
     const qualifiedRepository = core.getInput('repository') ||
-        github.context.repo.repo.split('/')[1];
+        `${github.context.repo.repo}`;
     core.debug(`qualified repository = '${qualifiedRepository}'`);
     result.repositoryOwner = github.context.repo.owner;
     result.repositoryName = qualifiedRepository;

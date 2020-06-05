@@ -2,8 +2,7 @@ name: 'Checkout'
 description: 'Checkout a Git repository at a particular version'
 inputs:
   repository:
-    description: 'Repository name with owner. For example, actions/checkout'
-    default: ${{ github.repository }}
+    description: "Repository name without owner, 'verily-src'. For example, actions/checkout"
   ref:
     description: >
       The branch, tag or SHA to checkout. When checking out the repository that

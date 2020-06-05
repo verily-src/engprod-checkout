@@ -36,8 +36,7 @@ Refer [here](https://github.com/actions/checkout/blob/v1/README.md) for previous
 ```yaml
 - uses: actions/checkout@v2
   with:
-    # Repository name with owner. For example, actions/checkout
-    # Default: ${{ github.repository }}
+    # Repository name without owner, 'verily-src'. For example, actions/checkout
     repository: ''
 
     # The branch, tag or SHA to checkout. When checking out the repository that
