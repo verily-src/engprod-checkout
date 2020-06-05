@@ -26,7 +26,7 @@ export function getInputs(): IGitSourceSettings {
     splitRepository.length !== 2 ||
     !splitRepository[0] ||
     !splitRepository[1] ||
-    splitRepository[0] != `${github.context.repo.owner}`
+    splitRepository[0] !== github.context.repo.owner
   ) {
     throw new Error(
       `Invalid repository '${qualifiedRepository}'. Expected format ${github.context.repo.owner}/{repo}.`
