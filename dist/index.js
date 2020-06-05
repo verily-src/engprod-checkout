@@ -14077,9 +14077,9 @@ function getInputs() {
         github.context.repo.repo.split('/')[1];
     core.debug(`qualified repository = '${qualifiedRepository}'`);
     result.repositoryOwner = github.context.repo.owner;
-    result.repositoryName =
-        // Repository path
-        result.repositoryPath = core.getInput('path') || '.';
+    result.repositoryName = qualifiedRepository;
+    // Repository path
+    result.repositoryPath = core.getInput('path') || '.';
     result.repositoryPath = path.resolve(githubWorkspacePath, result.repositoryPath);
     if (!(result.repositoryPath + path.sep).startsWith(githubWorkspacePath + path.sep)) {
         throw new Error(`Repository path '${result.repositoryPath}' is not under '${githubWorkspacePath}'`);
