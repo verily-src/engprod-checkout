@@ -151,6 +151,22 @@ export async function getSource(settings: IGitSourceSettings): Promise<void> {
           settings.fetchDepth,
           settings.nestedSubmodules
         )
+
+        // Check all submodules
+        const parseOwner = /github\.com[:\/]([^\/]*)\/[^\/]*\.git/
+        const output = await git.submoduleForeach(
+          'git remote get-url origin',
+          settings.nestedSubmodules
+        )
+        for (let line of output.split('\n')) {
+          let match = line.match(parseOwner) || []
+          if (match.length == 2 && match[1] != settings.repositoryOwner) {
+            throw new Error(
+              `Submodule '${match[0]}' is invalid. Expected '${settings.repositoryOwner}' as owner.`
+            )
+          }
+        }
+
         await git.submoduleForeach(
           'git config --local gc.auto 0',
           settings.nestedSubmodules
