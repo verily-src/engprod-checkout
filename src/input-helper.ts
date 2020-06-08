@@ -87,15 +87,9 @@ export function getInputs(): IGitSourceSettings {
   core.debug(`lfs = ${result.lfs}`)
 
   // Submodules
-  result.submodules = false
-  result.nestedSubmodules = false
-  const submodulesString = (core.getInput('submodules') || '').toUpperCase()
-  if (submodulesString == 'RECURSIVE') {
-    result.submodules = true
-    result.nestedSubmodules = true
-  } else if (submodulesString == 'TRUE') {
-    result.submodules = true
-  }
+  result.submodules = true
+  result.nestedSubmodules = true
+
   core.debug(`submodules = ${result.submodules}`)
   core.debug(`recursive submodules = ${result.nestedSubmodules}`)
 
