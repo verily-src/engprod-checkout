@@ -1,6 +1,6 @@
 ## Migration
 
-verily-src/checkout is an old public repository and is no longer maintained.
+verily-src/engprod-checkout is an old public repository and is no longer maintained.
 
 Please use the repository
 [verily-src/actions-checkout](https://github.com/verily-src/actions-checkout) as
