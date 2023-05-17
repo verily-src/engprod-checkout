@@ -24,6 +24,8 @@ export function getInputs(): IGitSourceSettings {
   result.repositoryOwner = github.context.repo.owner
   result.repositoryName = qualifiedRepository
 
+  core.info(`Owner: ${result.repositoryOwner}, Repo: ${result.repositoryName}`)
+
   // Repository path
   result.repositoryPath = core.getInput('path') || '.'
   result.repositoryPath = path.resolve(
